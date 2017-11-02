@@ -1,0 +1,30 @@
+<!-- Primary template that will get shown when widget loads -->
+<script type="text/ng-template" id="hackfest1Main.html"> 
+	<widget-row>
+		<widget-cell>
+			<h2>{{data.value.message}}</h2>
+		</widget-cell>
+	</widget-row>
+		
+	<widget-row ng-repeat="item in items.value" clickable ng-click="showDetails(item)">
+		<widget-cell fill>
+			<span class="itemName">{{item.title}}</span>
+			<span ng-repeat= "tag in item.tags" class="label label-success">
+				{{tag}}
+			</span>
+		</widget-cell>
+		<widget-cell>
+			<widget-icon name="angle-right"></widget-icon>
+		</widget-cell>
+	</widget-row>
+</script>
+
+<!-- This template gets shown when user clicks one of the items in the list -->
+<script type="text/ng-template" id="hackfest1Details.html"> 
+	<!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
+	<wr>
+		<wc><h2>{{detailsItem.value.title}}</h2></wc>
+	</wr>
+	<wr><wc><span ng-repeat= "tag in detailsItem.value.tags" class="label label-success">{{tag}}</span></wc></wr>
+	<wr><wc><div class="pDetails">{{detailsItem.value.details}}</div></wc></wr>
+</script>
